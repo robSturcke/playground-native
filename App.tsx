@@ -4,21 +4,24 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './src/stacks/home';
 import About from './src/stacks/about';
 import CreatePostScreen from './src/stacks/createPost';
+import { NativeBaseProvider } from 'native-base';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Home'>
-        <Stack.Screen
-          name='Home'
-          component={HomeScreen}
-          options={{ title: 'Overview' }}
-        />
-        <Stack.Screen name='About' component={About} />
-        <Stack.Screen name='CreatePost' component={CreatePostScreen} />
-      </Stack.Navigator>
+      <NativeBaseProvider>
+        <Stack.Navigator initialRouteName='Home'>
+          <Stack.Screen
+            name='Home'
+            component={HomeScreen}
+            options={{ title: 'Overview' }}
+          />
+          <Stack.Screen name='About' component={About} />
+          <Stack.Screen name='CreatePost' component={CreatePostScreen} />
+        </Stack.Navigator>
+      </NativeBaseProvider>
     </NavigationContainer>
   );
 }

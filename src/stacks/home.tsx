@@ -1,5 +1,6 @@
+import { Box, Button } from 'native-base';
 import { useEffect } from 'react';
-import { Button, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 
 function HomeScreen({ navigation, route }) {
   useEffect(() => {
@@ -13,6 +14,17 @@ function HomeScreen({ navigation, route }) {
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Home Screen</Text>
       <Button
+        shadow={2}
+        onPress={() =>
+          navigation.navigate('About', {
+            itemId: 86,
+            otherParam: 'dude anything',
+          })
+        }
+      >
+        Go to About
+      </Button>
+      {/* <Button
         title='Go to About'
         onPress={() =>
           navigation.navigate('About', {
@@ -24,7 +36,7 @@ function HomeScreen({ navigation, route }) {
       <Button
         title='Create post'
         onPress={() => navigation.navigate('CreatePost')}
-      />
+      /> */}
       <Text style={{ margin: 10 }}>Post: {route.params?.post}</Text>
     </View>
   );
